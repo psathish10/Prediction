@@ -13,6 +13,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import datetime
 from datetime import timedelta
+from app import main
 
 # Set page config
 st.set_page_config(layout="wide", page_title="Schwing Stetter Sales Analytics")
@@ -33,7 +34,7 @@ df = load_data()
 # Sidebar
 st.sidebar.image('logo.png', width=250)
 st.sidebar.title('Navigation')
-page = st.sidebar.radio('Select Page', ['Sales Analytics', 'Sales Forecasting'])
+page = st.sidebar.radio('Select Page', ['Sales Analytics', 'Sales Forecasting','Ai Dashboard'])
 
 # Sales Analytics Page
 if page == 'Sales Analytics':
@@ -119,6 +120,8 @@ if page == 'Sales Analytics':
                                   x='Warranty_Years',
                                   title='Distribution of Warranty Years')
         st.plotly_chart(fig_warranty, use_container_width=True)
+elif page == 'Ai Dashboard':
+   main()
 
 # Sales Forecasting Page
 elif page == 'Sales Forecasting':
@@ -449,7 +452,7 @@ if st.sidebar.button("Export Forecast Data"):
 
 # Add footer
 st.markdown("---")
-st.markdown("Schwing Stetter Sales Analytics Dashboard - Created with Streamlit")
+st.markdown("Schwing Stetter Sales Analytics Dashboard - Powerd By Toolfe")
 
 # Add error handling
 def handle_errors():
